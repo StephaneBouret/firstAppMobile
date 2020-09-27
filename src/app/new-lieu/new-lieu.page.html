@@ -1,0 +1,27 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>Ajouter un lieu</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <h2 class="ion-text-center">Ajouter un lieu</h2>
+  <form #addForm="ngForm" (submit)="ajoutLieu(addForm.value)" >
+    <ion-item>
+      <ion-input type="text" name="title" ngModel required placeholder="Entrez un titre" ></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-input type="text" name="country" ngModel placeholder="Entrez un pays" ></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-input type="text" name="city" ngModel placeholder="Entrez une ville" ></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-input type="text" name="keywords" ngModel placeholder="Mot(s) clé(s)" ></ion-input>
+    </ion-item>
+    <ion-button type="submit" expand="block" [disabled]="!addForm.valid" >Enregistrer le lieu</ion-button>
+  </form>
+</ion-content>

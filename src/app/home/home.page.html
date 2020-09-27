@@ -1,0 +1,30 @@
+<ion-header [translucent]="true">
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>
+      Accueil CEFii App
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-card class="ion-text-center">
+    <ion-card-header color="tertiary">
+      <h1>Nous contacter</h1>
+    </ion-card-header>
+    <ion-card-content class="ion-padding">
+      <p>Nom : {{ infos.name }} </p>
+      <p><ion-button expand="block" color="light" class="contact">
+        <a href="tel:{{ infos.tel }}">{{ infos.tel }}</a>
+      </ion-button>
+      </p>
+      <p><ion-button expand="block" color="light" class="contact">
+        <a class="ion-text-lowercase" href="mailto:{{ infos.mail }}">{{ infos.mail }}</a>
+      </ion-button>
+      </p>
+      <img [src]="infos.logo" alt="logo">
+    </ion-card-content>
+   </ion-card>
+</ion-content>

@@ -1,0 +1,25 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>Mes lieux</ion-title>
+    <ion-buttons slot="end">
+      <ion-button icon-only [routerLink]="'/new-lieu'" >
+        <ion-icon size="large" name="add-circle"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <ion-list>
+    <ion-item *ngFor="let lieu of lieux" >
+      {{ lieu.title }}
+      <ion-button icon-only slot="end" (click)="goToDetailsLieu(lieu)">
+        <ion-icon name="eye"></ion-icon>
+      </ion-button>
+    </ion-item>
+  </ion-list>
+
+</ion-content>

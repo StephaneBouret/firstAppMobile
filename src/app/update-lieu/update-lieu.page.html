@@ -1,0 +1,27 @@
+<ion-header>
+  <ion-toolbar color="primary">
+      <ion-buttons slot="start">
+          <ion-back-button></ion-back-button>
+      </ion-buttons>
+      <ion-title>Edition de {{ lieuModif.title }} </ion-title>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+    <h2 class="ion-text-center">Modifiez votre lieu</h2>
+    <form #editForm="ngForm" (ngSubmit)="editLieu()" >
+      <ion-item>
+        <ion-input type="text" name="title" [(ngModel)]="lieuModif.title" required placeholder="Titre" ></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-input type="text" name="country" [(ngModel)]="lieuModif.country" placeholder="Pays" ></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-input type="text" name="city" [(ngModel)]="lieuModif.city" placeholder="Ville" ></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-input type="text" name="keywords" [(ngModel)]="lieuModif.keywords" placeholder="Mot(s) clé(s)" ></ion-input>
+      </ion-item>
+      <ion-button type="submit" expand="block" [disabled]="!editForm.valid" >Enregistrer le lieu</ion-button>
+    </form>
+</ion-content>

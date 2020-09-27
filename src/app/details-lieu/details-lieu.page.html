@@ -1,0 +1,57 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>Détails de {{ lieu.title }} </ion-title>
+  </ion-toolbar>
+  <ion-fab vertical="top" horizontal="end">
+    <ion-fab-button><ion-icon name="construct" ></ion-icon></ion-fab-button>
+    <ion-fab-list>
+      <ion-fab-button color="dark" (click)="majLieu(lieu)" ><ion-icon name="create"></ion-icon></ion-fab-button>
+      <ion-fab-button color="dark" (click)="supprimerLieu(lieu.creatingDate)" ><ion-icon name="trash"></ion-icon></ion-fab-button>
+      <ion-fab-button color="dark" (click)="ajouterImage()"><ion-icon name="camera" ></ion-icon></ion-fab-button>
+    </ion-fab-list>
+  </ion-fab>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <ion-card>
+    <ion-card-header><h2> {{ lieu.title }} </h2></ion-card-header>
+    <ion-card-content class="ion-padding" >
+      <p>Pays : <strong> {{ lieu.country }} </strong></p>
+      <p>Ville : <strong> {{ lieu.city }} </strong></p>
+      <p>Mots-clés : <strong> {{ lieu.keywords }} </strong></p>
+      <p>Latitude : <strong> {{ lieu.location.latitude }} </strong></p>
+      <p>Longitude : <strong> {{ lieu.location.longitude }} </strong></p>
+      <ion-slides *ngIf="lieu.photo.length > 1" class="ion-margin-bottom" pager="true" [options]="slideOpts" >
+        <ion-slide class="ion-margin-top image" *ngFor="let img of lieu.photo; let index = index;">
+          <ion-button icon-only class="ion-no-margin" color="dark" (click)="supprimerImage(index)" >
+              <ion-icon name="close-circle"></ion-icon>
+          </ion-button>
+          <img [src]="img">
+        </ion-slide>
+      </ion-slides>
+      <div class="ion-margin-bottom" *ngIf="lieu.photo.length == 1">
+        <div class="ion-margin-top image">
+          <ion-button icon-only class="ion-no-margin" color="dark" (click)="supprimerImage(0)" >
+              <ion-icon name="close-circle"></ion-icon>
+          </ion-button>
+          <img [src]="lieu.photo[0]">
+        </div>
+      </div>
+    </ion-card-content>
+    <ion-card-content>
+      <agm-map 
+        [zoom]="zoom" 
+        [latitude]="lieu.location.latitude" 
+        [longitude]="lieu.location.longitude">
+        <agm-marker 
+          [latitude]="lieu.location.latitude" 
+          [longitude]="lieu.location.longitude" 
+          [label]="lieu.title">
+        </agm-marker>
+      </agm-map>
+    </ion-card-content>
+  </ion-card>
+</ion-content>

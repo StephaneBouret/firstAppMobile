@@ -1,0 +1,24 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+        <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>Détails de l'image</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+<ion-card>
+  <ion-card-header>
+    <ion-item>
+      <ion-avatar slot="start">
+        <img *ngIf="image.userImageURL" [src]="image.userImageURL">
+      </ion-avatar>
+      <ion-label>Auteur : {{ image.user }} </ion-label>
+    </ion-item>
+  </ion-card-header>
+  <ion-card-content>
+    <img [src]="image.webformatURL" >
+  </ion-card-content>
+</ion-card>
+</ion-content>
